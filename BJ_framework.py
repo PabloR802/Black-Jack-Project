@@ -190,3 +190,4 @@ if __name__ == "__main__":
     game_logic = BlackjackGame()
     app = BlackjackGUI(game_logic)
     app.run()
+print("hola")
