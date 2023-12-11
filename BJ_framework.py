@@ -27,7 +27,7 @@ class Deck:
         for value in values:
             for suit in suits:
                 self.cards.append(Card(suit,value))
-        #pass
+        pass
 
     def shuffle(self):
         random.shuffle(self.cards)
@@ -82,19 +82,41 @@ class BlackjackGame:
         pass
 
     def start_game(self):
-        # TODO: Start a new game and deal two cards to each player
+        self.player.hand = Hand()
+        self.dealer.hand = Hand()
+
+        for i in range (2):
+            self.player.hand.add_card(self.deck.deal())
+            self.dealer.hand.add_card(self.deck.deal())
         pass
 
     def hit(self)-> bool:
-        # TODO: Add a card to the player's hand
-        pass
+        self.player.hand.add_card(self.deck.deal())
+        return self.player.hand.value() > 21
+    pass
 
     def dealer_hit(self) -> bool:
-        # TODO: Deal cards to the dealer based on blackjack's standard rules
+        while self.dealer.hand.value() < 17:
+            self.dealer.hand.add_card(self.deck.deal())
+        return self.dealer.hand.value() <= 21
         pass
 
     def determine_winner(self):
-        # TODO: Determine and return the winner of the game
+        player_value = self.player.hand.value()
+        dealer_value = self.dealer.hand.value()
+
+        if player_value > 21:
+            return "You've busted! The house wins."
+
+        if dealer_value > 21:
+            return "Dealer busts! You win."
+
+        if player_value > dealer_value:
+            return "You win!"
+        elif dealer_value > player_value:
+            return "Dealer wins."
+        else:
+            return "It's a tie!"
         pass
 
 # The GUI code is provided, so students don't need to modify it
