@@ -3,40 +3,45 @@ from tkinter import PhotoImage, messagebox
 import random
 
 class Card:
-    def __init__(self, suit: str, value: str):
-        # TODO: Initialize the attributes
+    def __init__(self, suit: str, value: int):
         self.suit = suit
         self.value = value
         pass
 
     def get_numeric_value(self) -> int:
-        # TODO: Return the numeric value of the card
-
+        if self.value in [ 'K', 'Q','J']:
+            return 10
+        elif self.value == 'A':
+            return 11
+        else:
+            return int(self.value)
         pass
 
     def get_image(self):
-        # TODO: Return the path to the card's image
+        return f"img/{self.value}_of_{self.suit}.png"
         pass
 
 class Deck:
     def __init__(self, suits =  [], values = []):
-        # TODO: Initialize the deck
-        self.cards = [Card(suit, value) for suit in suits for value in values]
+        self.cards = []
+        for value in values:
+            for suit in suits:
+                self.cards.append(Card(suit,value))
         #pass
 
     def shuffle(self):
-        # TODO: Shuffle the cards
         random.shuffle(self.cards)
         pass
 
     def deal(self)-> Card:
-        # TODO: Deal one card from the deck
-         return self.cards.pop(0)
+        if not self.cards:
+            raise ValueError("Deck is empty")
+         return self.cards.pop()
+    pass
         
 
 class EnglishDeck(Deck):
     def __init__(self):
-        # TODO: Create a standard deck of 52 cards and shuffle them
         suits = ['hearts', 'diamonds', 'clubs', 'spades']
         values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
         super().__init__(suits, values)
@@ -44,20 +49,28 @@ class EnglishDeck(Deck):
 
 class Hand:
     def __init__(self):
-        # TODO: Initialize the hand
+        self.cards = []
         pass
 
     def add_card(self, card: Card):
-        # TODO: Add a card to the hand
+        self.cards.append(card)
         pass
 
     def value(self)->int:
-        # TODO: Return the total value of the hand
+        total_value = sum(card.get_numeric_value() for card in self.cards)
+        num_aces = sum(1 for card in self.cards if card.value == 'A')
+
+        while total_value > 21 and num_aces:
+            total_value -= 10
+            num_aces -= 1
+
+        return total_value
         pass
 
 class Player:
     def __init__(self, name):
-        # TODO: Initialize the player's attributes
+        self.name = name
+        self.hand = Hand()
         pass
 
 class BlackjackGame:
