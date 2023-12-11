@@ -49,7 +49,7 @@ class EnglishDeck(Deck):
 
 class Hand:
     def __init__(self):
-        self.cards = []
+        self.cards =[]
         pass
 
     def add_card(self, card: Card):
@@ -75,7 +75,10 @@ class Player:
 
 class BlackjackGame:
     def __init__(self):
-        # TODO: Initialize the game's attributes
+        self.player = Player("Player")
+        self.dealer = Player("Dealer")
+        self.deck = EnglishDeck()
+        self.deck.shuffle()
         pass
 
     def start_game(self):
