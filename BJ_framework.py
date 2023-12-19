@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import PhotoImage, messagebox
 import random
+print("hola")
 
 class Card:
     def __init__(self, suit: str, value: int):
