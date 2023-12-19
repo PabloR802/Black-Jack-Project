@@ -15,7 +15,7 @@ class Card:
             return 11
         else:
             return int(self.value)
-        pass
+    pass
 
     def get_image(self):
         return f"img/{self.value}_of_{self.suit}.png"
