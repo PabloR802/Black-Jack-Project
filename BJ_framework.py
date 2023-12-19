@@ -18,7 +18,7 @@ class Card:
     pass
 
     def get_image(self):
-        return f"img/{self.value}_of_{self.suit}.png"
+        return f"C:\\Users\\Pablo\\Desktop\\Nueva carpeta\\Black-Jack-Project-Definitive\\img/{self.value}_of_{self.suit}.png"
         pass
 
 class Deck:
@@ -190,7 +190,7 @@ class BlackjackGUI:
         lbl.pack(side=tk.LEFT, padx=10)  # Center the last card horizontally a bit more
         
         # Deck in the middle
-        img = PhotoImage(file="img/card_back_01.png")
+        img = PhotoImage(file="c:\\Users\\Pablo\\Desktop\\Nueva carpeta\\Black-Jack-Project-Definitive\\img\\card_back_01.png")
         lbl = tk.Label(self.deck_frame, image=img, cursor="hand2")
         lbl.image = img
         lbl.pack(side=tk.TOP, padx=10)
