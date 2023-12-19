@@ -18,8 +18,13 @@ class Card:
     pass
 
     def get_image(self):
+<<<<<<< HEAD
         return f"C:\\Users\\Pablo\\Desktop\\Nueva carpeta\\Black-Jack-Project-Definitive\\img/{self.value}_of_{self.suit}.png"
         pass
+=======
+        return f"{self.value}_of_{self.suit}.png"
+    pass
+>>>>>>> 9e71c8bd679bcd94bab1ad6df60b0caa3714bae7
 
 class Deck:
     def __init__(self, suits =  [], values = []):
@@ -36,7 +41,7 @@ class Deck:
     def deal(self)-> Card:
         if not self.cards:
             raise ValueError("Deck is empty")
-         return self.cards.pop()
+        return self.cards.pop()
     pass
         
 
@@ -65,7 +70,7 @@ class Hand:
             num_aces -= 1
 
         return total_value
-        pass
+    pass
 
 class Player:
     def __init__(self, name):
@@ -99,7 +104,7 @@ class BlackjackGame:
         while self.dealer.hand.value() < 17:
             self.dealer.hand.add_card(self.deck.deal())
         return self.dealer.hand.value() <= 21
-        pass
+    pass
 
     def determine_winner(self):
         player_value = self.player.hand.value()
@@ -117,7 +122,7 @@ class BlackjackGame:
             return "Dealer wins."
         else:
             return "It's a tie!"
-        pass
+    pass
 
 # The GUI code is provided, so students don't need to modify it
 class BlackjackGUI:
