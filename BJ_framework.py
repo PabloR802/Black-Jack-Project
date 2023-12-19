@@ -18,13 +18,8 @@ class Card:
     pass
 
     def get_image(self):
-<<<<<<< HEAD
         return f"C:\\Users\\Pablo\\Desktop\\Nueva carpeta\\Black-Jack-Project-Definitive\\img/{self.value}_of_{self.suit}.png"
         pass
-=======
-        return f"{self.value}_of_{self.suit}.png"
-    pass
->>>>>>> 9e71c8bd679bcd94bab1ad6df60b0caa3714bae7
 
 class Deck:
     def __init__(self, suits =  [], values = []):
